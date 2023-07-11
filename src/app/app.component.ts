@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
+@Component({ //annotation
+  selector: 'app-root', //id du composant
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

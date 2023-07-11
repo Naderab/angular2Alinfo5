@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProductsComponent } from './products/products.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
-@NgModule({
+@NgModule({ //metedata / annotation
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+{{title}}
+{{person.name}}
+<ul *ngFor="let p of products">
+    <!--<div *ngIf="p.price > 200">-->
+    <!--<li [ngStyle]="{'color':p.likes>5 && 'red'}">{{p.name}}</li>-->
+    <li [ngClass]="{'like':p.likes>5}">{{p.name}}</li>
+    <li>{{p.price}}</li>
+    <li>{{p.quantity}}</li>
+    <li>{{p.likes}}</li>
+
+    <li><button [disabled]="p.quantity==0" (click)="buy(p)">Buy</button></li>
+    <li><button (click)="like(p)">Like</button></li>
+
+
+
+    <!--</div> -->
+</ul>
