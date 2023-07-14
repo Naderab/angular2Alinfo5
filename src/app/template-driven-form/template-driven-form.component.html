@@ -1,0 +1,35 @@
+<form #f="ngForm">
+    Nom :
+    <input type="text" name="nom" ngModel #nom="ngModel"  class="form-control" required>
+    <div class="alert alert-danger" *ngIf="nom.invalid && nom.touched">
+        <div>Name is required !</div>
+
+    </div>
+    Email :
+    <input type="text" name="email" ngModel #email="ngModel" class="form-control" required pattern="[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}">
+    <div class="alert alert-danger" *ngIf="email.invalid && email.touched">
+        <div *ngIf="email.errors?.['required']">Email is required !</div>
+        <div *ngIf="email.errors?.['pattern']">Email is invalid !</div>
+    </div>
+    Type de carte :
+    <input type="text" name="typeC" ngModel #typeC="ngModel" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="typeC.invalid && typeC.touched">
+        <div >Type de carte is required !</div>
+    </div>
+    Numéro de carte :
+    <input type="text" name="numC" ngModel #numC="ngModel" class="form-control" required minlength="16" maxlength="16">
+    <div class="alert alert-danger" *ngIf="numC.invalid && numC.touched">
+        <div *ngIf="numC.errors?.['required']">Num is required !</div>
+        <div *ngIf="numC.errors?.['minlength']">Num must have at least 16 characters !</div>
+        <div *ngIf="numC.errors?.['maxlength']">Num musn't be more than 16 characters!</div>
+    </div>
+    Date d'expiration :
+    <input type="date" name="dateEx" ngModel #dateEx="ngModel" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="dateEx.invalid && dateEx.touched">
+        <div>Date is required !</div>
+    </div>
+    Code:
+    <input type="number" name="code" ngModel #code="ngModel" class="form-control" [hidden]="typeC.invalid || numC.invalid || dateEx.invalid">
+    
+    <input type="submit" value="Ajouter" class="btn btn-primary" [disabled]="f.invalid">
+</form>

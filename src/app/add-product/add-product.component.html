@@ -1,4 +1,4 @@
-<form (ngSubmit)="addProduct()">
+<form #f="ngForm" (ngSubmit)="addProduct()">
     <div class="form-group">
         <div class="form-label">
             Name
@@ -13,15 +13,23 @@
         <div class="form-label">
             Quantity
         </div>
-        <input type="number" name="quantity" class="form-control" [(ngModel)]="product.quantity" required min="0">
+        <input type="number" name="quantity" class="form-control" [(ngModel)]="product.quantity" #quantity="ngModel" required min="0">
+    <div class="alert alert-danger" *ngIf="quantity.invalid && quantity.touched">
+        <div *ngIf="quantity.errors?.['required']">Quantity is required !</div>
+        <div *ngIf="quantity.errors?.['min']">Quantity must be positive !</div>
+    </div>
     </div>
     <div class="form-group">
         <div class="form-label">
             Price
         </div>
-        <input type="number" name="price" class="form-control" [(ngModel)]="product.price" required min="0">
+        <input type="number" name="price" class="form-control" [(ngModel)]="product.price" #price="ngModel" required min="0">
+    <div class="alert alert-danger" *ngIf="price.invalid && price.touched">
+        <div *ngIf="price.errors?.['required']">Price is required !</div>
+        <div *ngIf="price.errors?.['min']">Price must be positive !</div>
+    </div>
     </div>
     <div class="form-group">
-        <input type="submit" value="Ajouter" class="btn btn-primary" >
+        <input type="submit" value="Ajouter" class="btn btn-primary" [disabled]="f.invalid">
     </div>
 </form>
