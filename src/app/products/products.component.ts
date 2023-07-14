@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../core/models/Product';
 
 @Component({
   selector: 'app-products',
@@ -8,14 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
   title: string = "hello from products component";
   person = { name: "John", age: 30 };
-  products : any = [];
+  products : Product[] = [];
 
-  buy(product:any) {
+  buy(product:Product) {
     if (product.quantity > 0) {
       product.quantity--;
     }
   }
-  like(product:any) {
+  like(product:Product) {
     product.likes++;
   }
   constructor() { 
@@ -24,9 +25,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = [
-    { name: "product1", price: 100,quantity:10,likes:0 },
-    { name: "product2", price: 200,quantity:20,likes:0  },
-    { name: "product3", price: 300,quantity:0,likes:0  }
+    {id:'1', name: "product1", price: 100,quantity:10,likes:0 },
+    {id:'2', name: "product2", price: 200,quantity:20,likes:0  },
+    {id:'3', name: "product3", price: 300,quantity:0,likes:0  }
   ];
   }
 

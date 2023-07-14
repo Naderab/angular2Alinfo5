@@ -1,17 +1,41 @@
 {{title}}
 {{person.name}}
-<ul *ngFor="let p of products">
-    <!--<div *ngIf="p.price > 200">-->
-    <!--<li [ngStyle]="{'color':p.likes>5 && 'red'}">{{p.name}}</li>-->
-    <li [ngClass]="{'like':p.likes>5}">{{p.name}}</li>
-    <li>{{p.price}}</li>
-    <li>{{p.quantity}}</li>
-    <li>{{p.likes}}</li>
+<!--<ul *ngFor="let p of products">
+    <div *ngIf="p.price > 200">
+    <td [ngStyle]="{'color':p.tdkes>5 && 'red'}">{{p.name}}</td>
+    <td [ngClass]="{'tdke':p.tdkes>5}">{{p.name}}</td>
+    <td>{{p.price}}</td>
+    <td>{{p.quantity}}</td>
+    <td>{{p.tdkes}}</td>
 
-    <li><button [disabled]="p.quantity==0" (click)="buy(p)">Buy</button></li>
-    <li><button (click)="like(p)">Like</button></li>
+    <td><button [disabled]="p.quantity==0" (ctdck)="buy(p)">Buy</button></td>
+    <td><button (ctdck)="tdke(p)">tdke</button></td>
 
 
 
-    <!--</div> -->
-</ul>
+    </div>
+</ul>-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Likes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of products">
+            <td [ngClass]="{'like':p.likes>5}">{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.quantity}}</td>
+            <td>{{p.likes}}</td>
+            <td><button [disabled]="p.quantity==0" (click)="buy(p)">Buy</button></td>
+            <td><button (click)="like(p)">Like</button></td>
+            <td><a class="btn btn-primary" [routerLink]="['/details',p.id]">Details</a></td>
+        </tr>
+    </tbody>
+</table>
