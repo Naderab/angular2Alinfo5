@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../core/models/Product';
+import { ProductService } from '../core/services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -19,16 +20,12 @@ export class ProductsComponent implements OnInit {
   like(product:Product) {
     product.likes++;
   }
-  constructor() { 
+  constructor(private _productService:ProductService) { 
     //code
   }
 
   ngOnInit(): void {
-    this.products = [
-    {id:'1', name: "product1", price: 100,quantity:10,likes:0 },
-    {id:'2', name: "product2", price: 200,quantity:20,likes:0  },
-    {id:'3', name: "product3", price: 300,quantity:0,likes:0  }
-  ];
+    this.products = this._productService.productsList;
   }
 
 }
