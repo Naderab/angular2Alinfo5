@@ -1,1 +1,27 @@
-<p>add-product works!</p>
+<form (ngSubmit)="addProduct()">
+    <div class="form-group">
+        <div class="form-label">
+            Name
+        </div>
+        <input type="text" name="name" class="form-control" [(ngModel)]="product.name" #name="ngModel" required minlength="5">
+        <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+            <div *ngIf="name.errors?.['required']">Name is required !</div>
+            <div *ngIf="name.errors?.['minlength']">Name must have at least 5 characters !</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">
+            Quantity
+        </div>
+        <input type="number" name="quantity" class="form-control" [(ngModel)]="product.quantity" required min="0">
+    </div>
+    <div class="form-group">
+        <div class="form-label">
+            Price
+        </div>
+        <input type="number" name="price" class="form-control" [(ngModel)]="product.price" required min="0">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Ajouter" class="btn btn-primary" >
+    </div>
+</form>

@@ -33,8 +33,8 @@
             <td>{{p.price}}</td>
             <td>{{p.quantity}}</td>
             <td>{{p.likes}}</td>
-            <td><button [disabled]="p.quantity==0" (click)="buy(p)">Buy</button></td>
-            <td><button (click)="like(p)">Like</button></td>
+            <td><button class="btn btn-success" [disabled]="p.quantity==0" (click)="buy(p)">Buy</button></td>
+            <td><button class="btn btn-danger" (click)="like(p)">Like</button></td>
             <td><a class="btn btn-primary" [routerLink]="['/details',p.id]">Details</a></td>
         </tr>
     </tbody>
