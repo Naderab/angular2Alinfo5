@@ -11,7 +11,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { FormsModule } from '@angular/forms';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ProductService } from './core/services/product.service';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({ //metedata / annotation
   declarations: [
     AppComponent,
@@ -25,7 +25,8 @@ import { ProductService } from './core/services/product.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

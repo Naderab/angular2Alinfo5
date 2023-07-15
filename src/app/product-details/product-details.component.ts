@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductConsumerService } from '../core/services/product-consumer.service';
+import { Product } from '../core/models/Product';
 
 @Component({
   selector: 'app-product-details',
@@ -8,10 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private _activatedRoute:ActivatedRoute) { }
-  id:string = "";
+  constructor(private _router:Router,private _activatedRoute:ActivatedRoute,private _consumer:ProductConsumerService) { }
+  id!: number ;
+  product : Product = new Product();
   ngOnInit(): void {
     this.id = this._activatedRoute.snapshot.params['id']
+    this._consumer.getProductById(this.id).subscribe((data)=>this.product = data)
+  }
+
+  delete() {
+    this._consumer.deleteProduct(this.id).subscribe(()=>this._router.navigate(['/products']))
   }
 
 }

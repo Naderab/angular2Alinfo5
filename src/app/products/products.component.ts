@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../core/models/Product';
 import { ProductService } from '../core/services/product.service';
+import { ProductConsumerService } from '../core/services/product-consumer.service';
 
 @Component({
   selector: 'app-products',
@@ -20,12 +21,15 @@ export class ProductsComponent implements OnInit {
   like(product:Product) {
     product.likes++;
   }
-  constructor(private _productService:ProductService) { 
+  constructor(private _productService:ProductService,private _consumer:ProductConsumerService) { 
     //code
   }
 
   ngOnInit(): void {
-    this.products = this._productService.productsList;
+    //this.products = this._productService.productsList;
+    this._consumer.getProducts().subscribe((data) => this.products = data)
+    
+    
   }
 
 }
